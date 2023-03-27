@@ -3,8 +3,17 @@ import "./loader-styles.css";
 export default function Loader() {
   return (
     <>
-      <div className="lds-ripple">
-        <div></div>
+      <div className="loader-container">
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+        />
+        <div className="lds-ring">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
         <div></div>
       </div>
     </>

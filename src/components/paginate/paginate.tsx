@@ -33,16 +33,15 @@ export default function PaginatedItems({ itemsPerPage, items }: any) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [limit, setLimit] = useState(30);
   const [offsset, setOffset] = useState(0);
+
   useEffect(() => {
-    setIsLoading(true);
     async function getDados() {
       const response = await marvelApi.get(
         `/characters?limit=${limit}&offset=${offsset}&`
       );
       const response2 = await marvelApi.get(`/characters`);
-      console.log(response2, "asdasd");
+
       setDados(response.data.data.results);
-      setIsLoading(false);
     }
     getDados();
   }, [limit, offsset]);
@@ -69,12 +68,15 @@ export default function PaginatedItems({ itemsPerPage, items }: any) {
     const newOffset = (event.selected * itemsPerPage) % dados.length;
     setLimit(30);
     setOffset(+event.selected * 30);
-    console.log(limit, "aaaaaaaaaaaaaaa");
+
     console.log(
       `User requested page number ${event.selected}, which is offset ${newOffset}`
     );
     setItemOffset(newOffset);
   };
+  if (isLoading) {
+    return;
+  }
 
   return (
     <>
