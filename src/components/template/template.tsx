@@ -1,7 +1,9 @@
+import PaginatedItems from "../paginate/paginate";
+
 export default function Template() {
   return (
     <>
-      <h1>Olá</h1>
+      <PaginatedItems itemsPerPage={4} />
     </>
   );
 }
