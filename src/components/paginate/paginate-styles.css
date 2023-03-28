@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Marvel&display=swap");
 body {
   background-image: url("assets/universe.jpg");
+  font-family: "Marvel", Courier, monospace;
   background-size: contain;
 }
 
@@ -10,13 +11,10 @@ body {
   align-items: center;
   gap: 30;
   list-style: none;
-  margin-top: 30;
-}
 
-.pagination {
   cursor: pointer;
   color: #9b9b9b;
-  font-family: "Roboto", Courier, monospace;
+
   font-weight: 600;
 }
 
@@ -38,23 +36,23 @@ body {
 }
 .card {
   perspective: 1000px;
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 200px;
   position: relative;
-  margin: 5px;
-  margin-bottom: 2%;
+  margin-bottom: 5px;
 }
 .card img {
   width: 100%;
   border-radius: 5px;
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 180px;
   object-fit: fill;
 }
 .card .frente {
   position: absolute;
   transform: rotateY(0deg);
   backface-visibility: hidden;
+
   transition: transform 0.4s linear;
 }
 .card .fundo {
@@ -63,8 +61,8 @@ body {
   transform: rotateY(180deg);
   background-color: black;
   border-radius: 5px;
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 180px;
   backface-visibility: hidden;
   transition: transform 0.4s linear;
 }
@@ -94,7 +92,7 @@ body {
   display: grid;
   grid-auto-columns: max-content;
   grid-auto-flow: dense;
-  grid-auto-rows: minmax(10px, 150px);
+  grid-auto-rows: minmax(10px, 280px);
   grid-gap: 10px;
   grid-template-columns: repeat(6, 1fr);
   margin: 0 auto;
@@ -107,15 +105,18 @@ body {
   padding-top: 10px;
 }
 
-.shimmer {
-  color: grey;
-  display: inline-block;
-  -webkit-mask: linear-gradient(-60deg, #000 30%, #0005, #000 70%) right/300%
-    100%;
-  background-repeat: no-repeat;
-  animation: shimmer 2.5s infinite;
-  font-size: 50px;
-  max-width: 200px;
+.heroName {
+  display: flex;
+  width: 180px;
+  justify-content: center;
+  flex-wrap: wrap;
+  color: #ffffff;
+  background-color: black;
+  border-top: #ed1b24 2px solid;
+  font-size: 24px;
+}
+.containerHeroes {
+  margin-top: -50px;
 }
 
 @keyframes shimmer {
