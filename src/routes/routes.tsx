@@ -8,6 +8,7 @@ export default function Routes() {
     <BrowserRouter>
       <RRDRouter>
         <Route path="/" element={<Home />} />
+        <Route path="/character/:id" element={<Home />} />
       </RRDRouter>
     </BrowserRouter>
   );

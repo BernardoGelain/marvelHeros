@@ -1,0 +1,81 @@
+.cardsFan {
+  width: 800px;
+}
+
+.containerFooter {
+  margin-bottom: -100px;
+  padding-top: 20px;
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: space-around;
+  align-items: center;
+}
+.text {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+.icons {
+  margin-top: 30px;
+  display: flex;
+  padding: 10px;
+  gap: 25px;
+}
+.cardMarketing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.cardMarketing span {
+  color: white;
+  font-size: 24px;
+}
+@media (max-width: 1024px) {
+  .cardsFan {
+    width: 700px;
+  }
+}
+@media (max-width: 927px) {
+  .cardsFan {
+    width: 600px;
+  }
+  .containerFooter {
+    justify-content: space-between;
+  }
+  .textElements {
+    margin-left: 20px;
+  }
+}
+@media (max-width: 820px) {
+  .cardsFan {
+    width: 500px;
+  }
+}
+@media (max-width: 820px) {
+  .cardsFan {
+    width: 400px;
+  }
+}
+@media (max-width: 630px) {
+  .containerFooter {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .textElements {
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-direction: column;
+  }
+  .icons {
+    margin-top: 0;
+    display: flex;
+    padding: 5px;
+    gap: 25px;
+    margin-bottom: 20px;
+  }
+}

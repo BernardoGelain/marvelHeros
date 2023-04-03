@@ -22,6 +22,7 @@ nav {
   box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
   background: black;
   transition: 0.3s;
+  z-index: 100000;
 }
 
 nav.visible {

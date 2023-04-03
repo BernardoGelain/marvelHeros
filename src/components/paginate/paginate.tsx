@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { marvelApi } from "../../config/axios";
-import { Comic } from "../../models/comic";
+import { Character } from "../../models/character";
+
 import Loader from "../Loader/loader";
 import "./paginate-styles.css";
 
@@ -9,7 +10,7 @@ function Items({ currentItems }: any) {
   return (
     <div className="items">
       {currentItems &&
-        currentItems?.map((item: Comic) => (
+        currentItems?.map((item: Character) => (
           <div>
             <div className="card">
               <div className="fundo">
@@ -31,8 +32,9 @@ function Items({ currentItems }: any) {
   );
 }
 
-export default function PaginatedItems({ itemsPerPage, items }: any) {
-  const [dados, setDados] = useState<any>();
+export default function PaginatedItems({ itemsPerPage }: any) {
+  const [characters, setCharacters] = useState<any>();
+  const [totalCharacters, setTotalCharacters] = useState<any>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [limit, setLimit] = useState(30);
   const [offsset, setOffset] = useState(0);
@@ -43,7 +45,9 @@ export default function PaginatedItems({ itemsPerPage, items }: any) {
       const response = await marvelApi.get(
         `/characters?limit=${limit}&offset=${offsset}&`
       );
-      setDados(response.data.data.results);
+
+      setTotalCharacters(response.data.data.total);
+      setCharacters(response.data.data.results);
       setIsLoading(false);
     }
     getDados();
@@ -62,14 +66,14 @@ export default function PaginatedItems({ itemsPerPage, items }: any) {
     // Fetch items from another resources.
     setIsLoading(true);
     const endOffset = itemOffset + itemsPerPage;
-    setCurrentItems(dados?.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(dados?.length / itemsPerPage));
+    setCurrentItems(characters?.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(characters?.length / itemsPerPage));
     setIsLoading(false);
-  }, [itemOffset, itemsPerPage, dados]);
+  }, [itemOffset, itemsPerPage, characters]);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event: any) => {
-    const newOffset = (event.selected * itemsPerPage) % dados.length;
+    const newOffset = (event.selected * itemsPerPage) % characters.length;
     setLimit(30);
     setOffset(+event.selected * 30);
     window.scrollTo(0, 0);
@@ -78,9 +82,9 @@ export default function PaginatedItems({ itemsPerPage, items }: any) {
     );
     setItemOffset(newOffset);
   };
-  // if (isLoading) {
-  //   return <Loader />;
-  // }
+  const pages = totalCharacters / +itemsPerPage;
+  console.log(characters);
+
   return (
     <>
       <div className="containerHeroes">
@@ -88,25 +92,27 @@ export default function PaginatedItems({ itemsPerPage, items }: any) {
           {" "}
           <Items currentItems={currentItems} />
           {isLoading && <Loader />}
-          <ReactPaginate
-            nextLabel=">"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={7}
-            marginPagesDisplayed={2}
-            pageCount={53}
-            previousLabel="<"
-            pageClassName="page-item"
-            pageLinkClassName="page-link"
-            previousClassName="page-item"
-            previousLinkClassName="page-link"
-            nextClassName="page-item"
-            nextLinkClassName="page-link"
-            breakLabel="..."
-            breakClassName="page-item"
-            breakLinkClassName="page-link"
-            containerClassName="pagination"
-            activeClassName="active"
-          />
+          <div className="pagination">
+            <ReactPaginate
+              nextLabel=">"
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={7}
+              marginPagesDisplayed={2}
+              pageCount={pages}
+              previousLabel="<"
+              pageClassName="page-item"
+              pageLinkClassName="page-link"
+              previousClassName="page-item"
+              previousLinkClassName="page-link buttonLink"
+              nextClassName="page-item"
+              nextLinkClassName="page-link buttonLink"
+              breakLabel="..."
+              breakClassName="page-item"
+              breakLinkClassName="page-link"
+              containerClassName="pagination"
+              activeClassName="active"
+            />
+          </div>
         </>
       </div>
     </>
