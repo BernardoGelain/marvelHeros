@@ -1,0 +1,58 @@
+.containerPersonage {
+  background-image: url("../public/assets/universe.jpg");
+  margin-top: 50px;
+}
+
+.apresentacao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.imagemPersonagem {
+  width: 30%;
+}
+.nomePersonagem {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  font-size: 40px;
+  padding: 10px;
+}
+.comics {
+  color: white;
+  font-size: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-top: 2px solid red;
+  border-bottom: 2px solid red;
+  background-color: black;
+  margin-bottom: 15px;
+}
+@media (max-width: 1100px) {
+  .imagemPersonagem {
+    width: 40%;
+  }
+}
+@media (max-width: 830px) {
+  .imagemPersonagem {
+    width: 50%;
+  }
+}
+@media (max-width: 670px) {
+  .imagemPersonagem {
+    width: 60%;
+  }
+}
+@media (max-width: 500px) {
+  .imagemPersonagem {
+    width: 70%;
+  }
+}
+@media (max-width: 420px) {
+  .imagemPersonagem {
+    width: 95%;
+  }
+}

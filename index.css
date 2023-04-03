@@ -1,5 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Marvel&display=swap");
+body {
+  background-image: url("./public/assets/universe.jpg");
+  font-family: "Marvel", Courier, monospace;
+  background-size: contain;
+}
 body::-webkit-scrollbar {
   width: 5px; /* width of the entire scrollbar */
+  height: 0px;
 }
 
 body::-webkit-scrollbar-track {

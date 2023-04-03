@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
+import { useNavigate } from "react-router-dom";
 import { marvelApi } from "../../config/axios";
 import { Character } from "../../models/character";
 
@@ -7,12 +8,18 @@ import Loader from "../Loader/loader";
 import "./paginate-styles.css";
 
 function Items({ currentItems }: any) {
+  const navigate = useNavigate();
   return (
     <div className="items">
       {currentItems &&
         currentItems?.map((item: Character) => (
           <div>
-            <div className="card">
+            <div
+              className="card"
+              onClick={() => {
+                navigate(`character/${item.id}`);
+              }}
+            >
               <div className="fundo">
                 <span className="fundoElementos">
                   Clique para ver os quadrinhos!
