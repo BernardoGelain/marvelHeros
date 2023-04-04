@@ -9,33 +9,43 @@ import "./paginate-styles.css";
 
 function Items({ currentItems }: any) {
   const navigate = useNavigate();
+  console.log(currentItems, "items");
+
   return (
-    <div className="items">
-      {currentItems &&
-        currentItems?.map((item: Character) => (
-          <div>
-            <div
-              className="card"
-              onClick={() => {
-                navigate(`character/${item.id}`);
-              }}
-            >
-              <div className="fundo">
-                <span className="fundoElementos">
-                  Clique para ver os quadrinhos!
-                </span>
-              </div>
-              <div className="frente">
-                <img
-                  src={item.thumbnail.path + "." + item.thumbnail.extension}
-                  width={100}
-                />
-                <div className="heroName">{item.name}</div>
+    <>
+      {currentItems?.length == 0 && (
+        <div className="avisoVazio">
+          <span className="aviso">Nenhum personagem encontrado!</span>
+        </div>
+      )}
+
+      <div className="items">
+        {currentItems &&
+          currentItems?.map((item: Character) => (
+            <div>
+              <div
+                className="card"
+                onClick={() => {
+                  navigate(`character/${item.id}`);
+                }}
+              >
+                <div className="fundo">
+                  <span className="fundoElementos">
+                    Clique para ver os quadrinhos!
+                  </span>
+                </div>
+                <div className="frente">
+                  <img
+                    src={item.thumbnail.path + "." + item.thumbnail.extension}
+                    width={100}
+                  />
+                  <div className="heroName">{item.name}</div>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-    </div>
+          ))}
+      </div>
+    </>
   );
 }
 
@@ -91,12 +101,42 @@ export default function PaginatedItems({ itemsPerPage }: any) {
   };
   const pages = totalCharacters / +itemsPerPage;
   console.log(characters);
+  const [busca, setBusca] = useState("");
+
+  function returnCharacter() {
+    const formatBusca = busca == "" ? "*" : busca.replace(/ /g, "%20");
+    if (busca == "") {
+      window.location.reload();
+    }
+    setIsLoading(true);
+    async function getCharacter() {
+      const response = await marvelApi.get(
+        `/characters?nameStartsWith=${formatBusca}`
+      );
+
+      setTotalCharacters(response.data.data.total);
+      setCharacters(response.data.data.results);
+      setIsLoading(false);
+    }
+    getCharacter();
+  }
 
   return (
     <>
       <div className="containerHeroes">
         <>
           {" "}
+          <div className="busca">
+            <input
+              type="text"
+              placeholder="Busque por um personagem"
+              onChange={(e: any) => setBusca(e.target.value)}
+              value={busca}
+            />
+            <button className="searchButton" onClick={() => returnCharacter()}>
+              <img src="assets/lupa.svg" />
+            </button>
+          </div>
           <Items currentItems={currentItems} />
           {isLoading && <Loader />}
           <div className="pagination">

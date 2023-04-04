@@ -10,7 +10,52 @@
 
   font-weight: 600;
 }
-
+.busca {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-left: 70px;
+  margin-top: -100px;
+  margin-bottom: 20px;
+}
+input[type="text"] {
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background-color: #000;
+  border: 1px solid #ff0000;
+  color: #ffffff;
+  width: 300px;
+  height: 50px;
+}
+input[type="text"]::placeholder {
+  padding-left: 10px;
+  font-size: 20px;
+  font-family: "Marvel", Courier, monospace;
+}
+.searchButton {
+  border: none;
+  background-color: red;
+  border-radius: 5px;
+  width: 52px;
+  height: 52px;
+}
+.avisoVazio {
+  margin-top: 50px;
+}
+.aviso {
+  font-size: 40px;
+  color: #ffffff;
+  margin-top: 500px;
+}
+.searchButton:hover {
+  transform: scale(1.1);
+  transition: 300ms;
+}
+.searchButton img {
+  width: 20px;
+}
 .page-item {
   font-size: 16px;
 }
@@ -133,10 +178,20 @@
   .items {
     grid-template-columns: repeat(3, 1fr);
   }
+  .busca {
+    margin-left: 50px;
+    margin-top: -70px;
+    margin-bottom: 20px;
+  }
 }
 @media (max-width: 696px) {
   .items {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .busca {
+    margin-left: 40px;
+    margin-top: -50px;
+    margin-bottom: 20px;
   }
 }
 @media (max-width: 451px) {

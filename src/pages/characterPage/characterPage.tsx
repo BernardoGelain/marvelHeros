@@ -57,6 +57,9 @@ export default function CharacterPage() {
         <div className="nomePersonagem">
           <span>{personage[0]?.name}</span>
         </div>
+        <span className="characterDescription">
+          {personage[0]?.description}
+        </span>
       </div>
       <span className="comics">Comics</span>
       {comics.map((comic) => {
