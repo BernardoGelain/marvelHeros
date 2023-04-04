@@ -7,6 +7,7 @@ import { marvelApi } from "../../config/axios";
 import { Personage } from "../../models/personage";
 import { PersonageComic } from "../../models/personageComic";
 import "./characterPage-styles.css";
+import Footer from "../../components/footer/footer";
 
 export default function CharacterPage() {
   const routeParams = useParams();
@@ -65,6 +66,7 @@ export default function CharacterPage() {
       {comics.map((comic) => {
         return <Comic comic={comic} />;
       })}
+      <Footer />
     </>
   );
 }
