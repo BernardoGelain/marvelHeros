@@ -63,7 +63,7 @@ export default function CharacterPage() {
         </span>
       </div>
       <span className="comics">Comics</span>
-      <div className="containerComics">
+      <div className="containerCharacterComics">
         {comics.map((comic) => {
           return <Comic comic={comic} />;
         })}
