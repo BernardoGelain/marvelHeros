@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { marvelApi } from "../../config/axios";
+import { useState } from "react";
+
 import { PersonageComic } from "../../models/personageComic";
 import "./comic-styles.css";
 type Props = {

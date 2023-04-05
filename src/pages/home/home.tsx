@@ -7,11 +7,9 @@ import { marvelApi } from "../../config/axios";
 export default function Home() {
   return (
     <>
-      <div className="containerComics">
-        <Header />
-        <PaginatedItems itemsPerPage={30} />
-        <Footer />
-      </div>
+      <Header />
+      <PaginatedItems itemsPerPage={30} />
+      <Footer />
     </>
   );
 }
