@@ -63,9 +63,11 @@ export default function CharacterPage() {
         </span>
       </div>
       <span className="comics">Comics</span>
-      {comics.map((comic) => {
-        return <Comic comic={comic} />;
-      })}
+      <div className="containerComics">
+        {comics.map((comic) => {
+          return <Comic comic={comic} />;
+        })}
+      </div>
       <Footer />
     </>
   );
